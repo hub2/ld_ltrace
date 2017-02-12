@@ -37,13 +37,13 @@ handler = """
     push_arg_regs
 
     ; Print out the name of the called function
-    lea rsi, [rel name_{0}_n] ; podmien nazwe funkcji
-    mov rdx, {1} ; podmien dlugosc nazwy funkcji
+    lea rsi, [rel name_{0}_n]
+    mov rdx, {1}
     call write_addr
 
     ; Find out address of the real function in the next library in dynamic linking chain
     mov rdi, 0xffffffffffffffff
-    lea rsi, [rel name_{0}] ; podmien nazwe funkcji
+    lea rsi, [rel name_{0}]
     call dlsym wrt ..plt
 
 
@@ -58,7 +58,7 @@ handler = """
 
 data = """
 
-name_{0}: ; podmien labelki
+name_{0}:
     db "{0}", 0
 name_{0}_n:
     db "{0}", 10, 0
